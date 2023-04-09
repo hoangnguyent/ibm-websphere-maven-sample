@@ -1,4 +1,4 @@
-#ibm-websphere-maven-sample
+# ibm-websphere-maven-sample
 ## Introduction 
 This is a sample project for J2EE using the Maven build tool.
 
