@@ -40,7 +40,7 @@ Now we already had this dependency:
 If it doesn't, go into Maven root project and run again the command:
     mvn install
 
-5. The Maven plugin on the Eclipse may show error: "Plugin execution not covered by lifecycle configuration". 
+5. The Maven plugin on the Eclipse may show error: "Plugin execution not covered by lifecycle configuration". <br>
 Just go to: Window > Preferences > Maven > Errors/Warnings > Plugin execution not covered by lifecycle configuration. 
 Then change the value from "Error" to "Ignore".
 
