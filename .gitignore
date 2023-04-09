@@ -1,17 +1,49 @@
+.idea/
+$PRODUCT_WORKSPACE_FILE$
+misc.xml
+modules.xml
+vcs.xml
+workspace.xml
+codeStyleConfig.xml
+
+# SVN
+.svn/
+
+# Maven
+**/META-INF/maven
+**/target
+ae-EAR/src/main/application/**/*.jar
+ae-EAR/src/main/application/logback.xml
+
+# IDE metadata
+.metadata/
+
 # Compiled class file
 *.class
+classes/
+*/.classpath
+*.iml
+out
+bin/
+build/
+
+# Check style
+*.checkstyle
+.checkstyle
+
+# Project
+
+# Properties profiles
+*/properties.*/
+
+#Ejb
+*/ejbModule/com/
+*/ejbModule/org/
 
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -21,3 +53,31 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Deployment auto generated files
+ibm_ejbext.properties
+!resources.xml
+variables.xml
+.apt_generated
+*/wsclient/*.java
+
+# Project setting
+**/.factorypath
+**/.tern-project
+**/.settings
+**/.project
+!files/.project
+
+# Library
+library/*.jar
+!library/.project
+!library/com.ibm.*.jar
+!library/ojdbc*.jar
+!libraries.xml
+
+
+# Server
+WMQ Explorer Tests Data/.project
+
+#JUnit
+.sonarlint
