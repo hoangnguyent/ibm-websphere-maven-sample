@@ -66,7 +66,7 @@ Restart the server.
 
 ## 4. Maven setting
 
-- Register IBM dependency to the Local Maven Repository.
+- **Register IBM dependency to the Local Maven Repository.**
 
 You will see the file was_public.jar in the IBM root folder as well as a file pom nearby. Rename that pom to be: [was_public-9.0.0.pom].
 After that, run the following cmd to register those files to the local Maven repository:
@@ -85,7 +85,7 @@ The dependency is available to use.
 </dependency>
 ```
 
-- Register IBM dependency to the Local Maven Repository
+- **Prepare the source code**
 
 Download the source code. It contains several modules. At the root module, run the following commands:
 
@@ -94,7 +94,7 @@ mvn install
 mvn eclipse:eclipse (for Eclipse or Rational Application Developer using)
 ```
 
-- Import the source code to your IDE
+- **Import the source code to your IDE**
 
 Import source code to the Rational Application Developer or Eclipse. Ensure [sample-EAR/src/main/application] contains all sub-modules that are packaged.
 
@@ -129,7 +129,7 @@ It will be pull to processed. One record will be inserted into table ANNOUNCEMEN
 The status of this record will be changed after a period of time(60s) by the IBM Schedulers.
 
 ## 8. Verify log files
-There are 3 log files will be created. See their location in the DEV.properties.
+There are 3 log files will be created. Find their location in the DEV.properties.
 
 # Common issues and how to fix
 ## 1. The application started failed
