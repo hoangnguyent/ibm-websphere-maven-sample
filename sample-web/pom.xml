@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sample-web</artifactId>
+	<packaging>war</packaging>
+	<name>sample-web</name>
+
+	<parent>
+		<groupId>uk.co</groupId>
+		<artifactId>sample-root-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../sample-root-project/pom.xml</relativePath>
+	</parent>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>common</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-ejb</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm.ws</groupId>
+			<artifactId>runtime</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../library/com.ibm.ws.runtime.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+</project>

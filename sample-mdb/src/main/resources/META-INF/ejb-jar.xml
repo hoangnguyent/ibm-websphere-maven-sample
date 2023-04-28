@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+	version="3.1">
+	<display-name>sample-mdb</display-name>
+	<enterprise-beans>
+
+        <message-driven>
+            <ejb-name>TrainActivationEventListenerMDB</ejb-name>
+            <ejb-class>uk.co.sample.mdb.TrainActivationEventListenerMDB</ejb-class>
+            <transaction-type>Bean</transaction-type>
+            <message-destination-type>queue</message-destination-type>
+        </message-driven>
+        <message-driven>
+            <ejb-name>ResponseAfterPlayingAnnListenerMDB</ejb-name>
+            <ejb-class>uk.co.sample.mdb.ResponseAfterPlayingAnnListenerMDB</ejb-class>
+            <transaction-type>Bean</transaction-type>
+            <message-destination-type>queue</message-destination-type>
+        </message-driven>
+	</enterprise-beans>
+</ejb-jar>
