@@ -1,0 +1,233 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sample-EAR</artifactId>
+	<packaging>ear</packaging>
+	<name>sample-EAR</name>
+
+	<parent>
+		<groupId>uk.co</groupId>
+		<artifactId>sample-root-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../sample-root-project/pom.xml</relativePath>
+	</parent>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+
+		<plugins>
+
+			<!-- Enable J2EE Application Client -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-acr-plugin</artifactId>
+				<version>3.1.0</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- Clean modules folders in the /main/application -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>clean-modules-folders</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<failOnError>false</failOnError>
+							<filesets>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/common.jar</directory>
+								</fileset>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/sample-batch.jar</directory>
+								</fileset>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/sample-ejb.jar</directory>
+								</fileset>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/sample-mdb.jar</directory>
+								</fileset>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/sample-web.war</directory>
+								</fileset>
+								<fileset>
+									<directory>${project.basedir}/src/main/application/sample-webservice.war</directory>
+								</fileset>
+							</filesets>
+							<excludes>
+								<exclude>**/*.jar</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Package EAR in /target folder -->
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>ear</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<version>${version.javaee}</version>
+					<applicationName>sample-EAR</applicationName>
+					<displayName>sample-EAR</displayName>
+					<generateApplicationXml>true</generateApplicationXml>
+					<outputFileNameMapping>@{artifactId}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
+
+					<modules>
+						<jarModule>
+							<groupId>uk.co</groupId>
+							<artifactId>common</artifactId>
+						</jarModule>
+						<jarModule>
+							<groupId>uk.co</groupId>
+							<artifactId>sample-batch</artifactId>
+						</jarModule>
+						<ejbModule>
+							<groupId>uk.co</groupId>
+							<artifactId>sample-ejb</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>uk.co</groupId>
+							<artifactId>sample-mdb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>uk.co</groupId>
+							<artifactId>sample-web</artifactId>
+							<contextRoot>/sample-web</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>uk.co</groupId>
+							<artifactId>sample-webservice</artifactId>
+							<contextRoot>/sample-webservice</contextRoot>
+						</webModule>
+					</modules>
+
+				</configuration>
+			</plugin>
+
+			<!-- Copy application.xml to the /main/application for DEV deployment -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<failOnError>false</failOnError>
+							<target name="copy-application-xml">
+								<copy todir="${project.basedir}/src/main/application/META-INF"
+									overwrite="true">
+									<fileset dir="${project.build.directory}">
+										<include name="*.xml" />
+										<filename regex="^application.*" />
+									</fileset>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Extract jar files to the /main/application for DEV deployment -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<failOnError>false</failOnError>
+							<target name="unzip-to-modules-folders">
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/common.jar"
+									dest="${project.basedir}/src/main/application/common.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-batch.jar"
+									dest="${project.basedir}/src/main/application/sample-batch.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-ejb.jar"
+									dest="${project.basedir}/src/main/application/sample-ejb.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-mdb.jar"
+									dest="${project.basedir}/src/main/application/sample-mdb.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-web.war"
+									dest="${project.basedir}/src/main/application/sample-web.war/"
+									overwrite="true">
+								</unzip>
+								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-webservice.war"
+									dest="${project.basedir}/src/main/application/sample-webservice.war/"
+									overwrite="true">
+								</unzip>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>common</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-batch</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-mdb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>uk.co</groupId>
+			<artifactId>sample-webservice</artifactId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+</project>

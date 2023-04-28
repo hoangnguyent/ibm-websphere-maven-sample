@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE logback>
+<configuration scan="true">
+	<property name="LoggingDir" value="${log.dir}" />
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<charset>UTF-8</charset>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+			<key>source</key>
+			<defaultValue>${log.file.web}</defaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${source}"
+				class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<append>true</append>
+				<file>${LoggingDir}${source}.log</file>
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+					<!-- hourly rolling -->
+					<fileNamePattern>${LoggingDir}%d{yyyy-MM-dd,aux}/${source}.%d{yyyy-MM-dd_HH}.log.gz</fileNamePattern>
+					<!-- <maxHistory>24</maxHistory> -->
+				</rollingPolicy>
+				<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+					<charset>UTF-8</charset>
+					<pattern>${log.pattern}</pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+
+	<logger name="uk.co" level="${log.level}">
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="openjpa.jdbc.SQL" level="${log.level}">
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<root level="TRACE">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>

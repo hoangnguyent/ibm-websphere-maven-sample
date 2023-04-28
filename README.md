@@ -1,5 +1,5 @@
 # Introduction 
-This is a sample project for J2EE using the Maven build tool.
+This is a sample project for J2EE using the Maven build tool with multiple modules.
 
 The logic is simple. When a Train is activated, there is a event message sent to ACTIVATE queue. The application will take the message, and store a record in the database. After a period of time, a Scheduler Job will process this record to change its status and forward the message to another queue. Finally, another Scheduler Job will logically delete the record.
 
@@ -159,6 +159,9 @@ You should go into Administration Console/Servers/Server Type/WebSphere applicat
 Set the correct value: 1.1 for WAS 9.0.5.11 and the older; 2.0 for the newer. Save the setting and restart the Server.
 
 Refer: https://www.ibm.com/docs/en/siffs/2.0.0?topic=troubleshooting-javaxservletservletexceptioncould-not-find-endpoint-information
+
+## 5. The application started successfully. But the changes in the code still have not taken effect
+After doing Maven build, you may forget to refresh the module sample-EAR. Refresh it and re-publish the Application.
 
 # Contribute
 Hoang Nguyen. Skype: hoang.nt124
