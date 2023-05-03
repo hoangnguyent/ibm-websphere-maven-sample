@@ -125,7 +125,7 @@
 				<groupId>uk.co</groupId>
 				<artifactId>sample-batch</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
-				<type>jar</type>
+				<type>app-client</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>

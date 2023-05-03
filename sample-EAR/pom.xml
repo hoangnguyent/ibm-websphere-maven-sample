@@ -17,14 +17,6 @@
 
 		<plugins>
 
-			<!-- Enable J2EE Application Client -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-acr-plugin</artifactId>
-				<version>3.1.0</version>
-				<extensions>true</extensions>
-			</plugin>
-
 			<!-- Clean modules folders in the /main/application -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -90,10 +82,10 @@
 							<groupId>uk.co</groupId>
 							<artifactId>common</artifactId>
 						</jarModule>
-						<jarModule>
+						<appClientModule>>
 							<groupId>uk.co</groupId>
 							<artifactId>sample-batch</artifactId>
-						</jarModule>
+						</appClientModule>
 						<ejbModule>
 							<groupId>uk.co</groupId>
 							<artifactId>sample-ejb</artifactId>
@@ -207,7 +199,7 @@
 		<dependency>
 			<groupId>uk.co</groupId>
 			<artifactId>sample-batch</artifactId>
-			<type>jar</type>
+			<type>app-client</type>
 		</dependency>
 		<dependency>
 			<groupId>uk.co</groupId>
