@@ -61,19 +61,19 @@
 
 	<build>
 		<plugins>
-			<!-- Copy libraries into shared library folder -->
+			<!-- Copy dependencies into shared library folder -->
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>copy-libraries</id>
+						<id>copy-dependencies</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
 							<outputDirectory>${project.basedir}/../library</outputDirectory>
-							<excludeArtifactIds>was_public,javaee-api,runtime,common,sample-batch,sample-ejb,sample-mdb,sample-web,sample-webservice</excludeArtifactIds>
+							<excludeArtifactIds>was_public,javaee-api,runtime,mockito-all,mockito-core,powermock-api-mockito,powermock-api-mockito-common,powermock-api-support,powermock-module-junit4,powermock-core,powermock-module-junit4-common,powermock-reflect,rest-assured,rest-assured-common,common,sample-batch,sample-ejb,sample-mdb,sample-web,sample-webservice</excludeArtifactIds>
 							<stripVersion>false</stripVersion>
 						</configuration>
 					</execution>
@@ -85,6 +85,7 @@
 	<dependencyManagement>
 		<dependencies>
 
+			<!-- System dependencies -->
 			<dependency>
 				<groupId>com.ibm.ws</groupId>
 				<artifactId>jaxrs20</artifactId>
@@ -92,7 +93,6 @@
 				<scope>system</scope>
 				<systemPath>${project.basedir}/../library/com.ibm.ws.jaxrs20.jar</systemPath>
 			</dependency>
-
 			<dependency>
 				<groupId>com.ibm.ws</groupId>
 				<artifactId>jpa</artifactId>
@@ -100,7 +100,6 @@
 				<scope>system</scope>
 				<systemPath>${project.basedir}/../library/com.ibm.ws.jpa.jar</systemPath>
 			</dependency>
-
 			<dependency>
 				<groupId>com.ibm.ws</groupId>
 				<artifactId>runtime</artifactId>
@@ -108,13 +107,13 @@
 				<scope>system</scope>
 				<systemPath>${project.basedir}/../library/com.ibm.ws.runtime.jar</systemPath>
 			</dependency>
-
 			<dependency>
 				<groupId>com.ibm.websphere.appserver</groupId>
 				<artifactId>was_public</artifactId>
 				<version>9.0.0</version>
 			</dependency>
 
+			<!-- Application modules -->
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>common</artifactId>
@@ -152,6 +151,7 @@
 				<type>war</type>
 			</dependency>
 
+			<!-- Maven dependencies -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>

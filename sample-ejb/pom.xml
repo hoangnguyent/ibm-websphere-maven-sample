@@ -13,6 +13,9 @@
 	</parent>
 
 	<build>
+
+		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -68,6 +71,7 @@
 		<dependency>
 			<groupId>com.ibm.websphere.appserver</groupId>
 			<artifactId>was_public</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -80,12 +84,14 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- ***************** -->
