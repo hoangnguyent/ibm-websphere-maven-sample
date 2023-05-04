@@ -82,7 +82,7 @@
 							<groupId>uk.co</groupId>
 							<artifactId>common</artifactId>
 						</jarModule>
-						<appClientModule>>
+						<appClientModule>
 							<groupId>uk.co</groupId>
 							<artifactId>sample-batch</artifactId>
 						</appClientModule>
