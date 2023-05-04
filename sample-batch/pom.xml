@@ -8,13 +8,11 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
-
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>

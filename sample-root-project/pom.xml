@@ -4,7 +4,7 @@
 	<groupId>uk.co</groupId>
 	<artifactId>sample-root-project</artifactId>
 	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>sample-root-project</name>
 
 	<properties>
@@ -118,37 +118,37 @@
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>common</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>sample-batch</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>app-client</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>sample-ejb</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>sample-mdb</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>sample-web</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>war</type>
 			</dependency>
 			<dependency>
 				<groupId>uk.co</groupId>
 				<artifactId>sample-webservice</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<type>war</type>
 			</dependency>
 

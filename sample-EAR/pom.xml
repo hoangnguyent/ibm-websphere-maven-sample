@@ -8,13 +8,11 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
-
 		<plugins>
 
 			<!-- Clean modules folders in the /main/application -->
@@ -32,22 +30,22 @@
 							<failOnError>false</failOnError>
 							<filesets>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/common.jar</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-common-${project.parent.version}.jar</directory>
 								</fileset>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/sample-batch.jar</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-sample-batch-${project.parent.version}.jar</directory>
 								</fileset>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/sample-ejb.jar</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-sample-ejb-${project.parent.version}.jar</directory>
 								</fileset>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/sample-mdb.jar</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-sample-mdb-${project.parent.version}.jar</directory>
 								</fileset>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/sample-web.war</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-sample-web-${project.parent.version}.war</directory>
 								</fileset>
 								<fileset>
-									<directory>${project.basedir}/src/main/application/sample-webservice.war</directory>
+									<directory>${project.basedir}/src/main/application/${project.parent.groupId}-sample-webservice-${project.parent.version}.war</directory>
 								</fileset>
 							</filesets>
 							<excludes>
@@ -75,7 +73,6 @@
 					<applicationName>sample-EAR</applicationName>
 					<displayName>sample-EAR</displayName>
 					<generateApplicationXml>true</generateApplicationXml>
-					<outputFileNameMapping>@{artifactId}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
 
 					<modules>
 						<jarModule>
@@ -105,7 +102,7 @@
 							<contextRoot>/sample-webservice</contextRoot>
 						</webModule>
 					</modules>
-
+					<!-- TODO: HoangNguyen: ignore some more jar. Setting ear-resources -->
 				</configuration>
 			</plugin>
 
@@ -151,33 +148,33 @@
 							<failOnError>false</failOnError>
 							<target name="unzip-to-modules-folders">
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/common.jar"
-									dest="${project.basedir}/src/main/application/common.jar/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-common-${project.parent.version}.jar"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-common-${project.parent.version}.jar/"
 									overwrite="true">
 								</unzip>
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/sample-batch.jar"
-									dest="${project.basedir}/src/main/application/sample-batch.jar/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-sample-batch-${project.parent.version}.jar"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-sample-batch-${project.parent.version}.jar/"
 									overwrite="true">
 								</unzip>
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/sample-ejb.jar"
-									dest="${project.basedir}/src/main/application/sample-ejb.jar/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-sample-ejb-${project.parent.version}.jar"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-sample-ejb-${project.parent.version}.jar/"
 									overwrite="true">
 								</unzip>
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/sample-mdb.jar"
-									dest="${project.basedir}/src/main/application/sample-mdb.jar/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-sample-mdb-${project.parent.version}.jar"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-sample-mdb-${project.parent.version}.jar/"
 									overwrite="true">
 								</unzip>
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/sample-web.war"
-									dest="${project.basedir}/src/main/application/sample-web.war/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-sample-web-${project.parent.version}.war"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-sample-web-${project.parent.version}.war/"
 									overwrite="true">
 								</unzip>
 								<unzip
-									src="${project.build.directory}/${project.artifactId}/sample-webservice.war"
-									dest="${project.basedir}/src/main/application/sample-webservice.war/"
+									src="${project.build.directory}/${project.artifactId}-${project.parent.version}/${project.parent.groupId}-sample-webservice-${project.parent.version}.war"
+									dest="${project.basedir}/src/main/application/${project.parent.groupId}-sample-webservice-${project.parent.version}.war/"
 									overwrite="true">
 								</unzip>
 							</target>
@@ -194,7 +191,6 @@
 		<dependency>
 			<groupId>uk.co</groupId>
 			<artifactId>common</artifactId>
-			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>uk.co</groupId>
