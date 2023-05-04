@@ -5,7 +5,7 @@ import static uk.co.sample.constant.BatchConstant.END_CODE_SUCCESS;
 import static uk.co.sample.constant.BatchConstant.END_CODE_WARNING;
 import static uk.co.sample.util.EJBUtil.lookupRemoteEJB;
 
-import javax.inject.Inject;
+import org.slf4j.LoggerFactory;
 
 import uk.co.log.LogWrapperImpl;
 import uk.co.sample.base.AbstractBatch;
@@ -16,8 +16,7 @@ import uk.co.sample.security.Operator;
 
 public class AnnouncementDeleteBatch extends AbstractBatch {
 
-    @Inject
-    private static LogWrapperImpl logger;
+    private static LogWrapperImpl logger = new LogWrapperImpl(LoggerFactory.getLogger(AnnouncementDeleteBatch.class), AnnouncementDeleteBatch.class.getName());
 
     // ***** injection field *****
     // ***** constructor *****

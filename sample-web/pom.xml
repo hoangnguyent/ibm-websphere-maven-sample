@@ -8,12 +8,14 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
+
 		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -47,8 +49,6 @@
 		<dependency>
 			<groupId>com.ibm.ws</groupId>
 			<artifactId>runtime</artifactId>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/../library/com.ibm.ws.runtime.jar</systemPath>
 		</dependency>
 
 		<dependency>

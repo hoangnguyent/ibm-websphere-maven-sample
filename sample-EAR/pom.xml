@@ -8,24 +8,17 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
+
 		<finalName>${project.artifactId}</finalName>
 
 		<plugins>
 
-			<!-- Enable J2EE Application Client -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-acr-plugin</artifactId>
-				<version>3.1.0</version>
-				<extensions>true</extensions>
-			</plugin>
-
-			<!-- Clean modules folders in the /main/application -->
+			<!-- Clean modules folders in the /main/application for DEV deployment -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
@@ -90,10 +83,10 @@
 							<groupId>uk.co</groupId>
 							<artifactId>common</artifactId>
 						</jarModule>
-						<jarModule>
+						<appClientModule>
 							<groupId>uk.co</groupId>
 							<artifactId>sample-batch</artifactId>
-						</jarModule>
+						</appClientModule>
 						<ejbModule>
 							<groupId>uk.co</groupId>
 							<artifactId>sample-ejb</artifactId>
@@ -113,7 +106,7 @@
 							<contextRoot>/sample-webservice</contextRoot>
 						</webModule>
 					</modules>
-
+					<excludes>*.jar</excludes>
 				</configuration>
 			</plugin>
 
@@ -169,6 +162,11 @@
 									overwrite="true">
 								</unzip>
 								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-batch.jar"
+									dest="${project.build.directory}/m2e-wtp/ear-resources/sample-batch.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
 									src="${project.build.directory}/${project.artifactId}/sample-ejb.jar"
 									dest="${project.basedir}/src/main/application/sample-ejb.jar/"
 									overwrite="true">
@@ -199,15 +197,15 @@
 
 	<dependencies>
 
+		<!-- Application modules -->
 		<dependency>
 			<groupId>uk.co</groupId>
 			<artifactId>common</artifactId>
-			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>uk.co</groupId>
 			<artifactId>sample-batch</artifactId>
-			<type>jar</type>
+			<type>app-client</type>
 		</dependency>
 		<dependency>
 			<groupId>uk.co</groupId>
@@ -229,5 +227,6 @@
 			<artifactId>sample-webservice</artifactId>
 			<type>war</type>
 		</dependency>
+
 	</dependencies>
 </project>

@@ -7,12 +7,14 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
+
 		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -67,6 +69,7 @@
 		<dependency>
 			<groupId>com.ibm.websphere.appserver</groupId>
 			<artifactId>was_public</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
