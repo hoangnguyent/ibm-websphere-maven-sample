@@ -162,6 +162,11 @@
 									overwrite="true">
 								</unzip>
 								<unzip
+									src="${project.build.directory}/${project.artifactId}/sample-batch.jar"
+									dest="${project.build.directory}/m2e-wtp/ear-resources/sample-batch.jar/"
+									overwrite="true">
+								</unzip>
+								<unzip
 									src="${project.build.directory}/${project.artifactId}/sample-ejb.jar"
 									dest="${project.basedir}/src/main/application/sample-ejb.jar/"
 									overwrite="true">
