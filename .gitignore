@@ -76,13 +76,13 @@ library/*.jar
 !libraries.xml
 
 # Deploy for developer
-sample-EAR/src/main/application/common.jar/
+sample-EAR/src/main/application/*common*.jar/
 sample-EAR/src/main/application/META-INF/application.xml
-sample-EAR/src/main/application/sample-batch.jar/
-sample-EAR/src/main/application/sample-ejb.jar/
-sample-EAR/src/main/application/sample-mdb.jar/
-sample-EAR/src/main/application/sample-web.war/
-sample-EAR/src/main/application/sample-webservice.war/
+sample-EAR/src/main/application/*sample-batch*.jar/
+sample-EAR/src/main/application/*sample-ejb*.jar/
+sample-EAR/src/main/application/*sample-mdb*.jar/
+sample-EAR/src/main/application/*sample-web*.war/
+sample-EAR/src/main/application/*sample-webservice*.war/
 
 # Server
 WMQ Explorer Tests Data/.project

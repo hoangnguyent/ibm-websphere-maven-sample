@@ -8,10 +8,9 @@ import static uk.co.sample.constant.CommonConstant.HYPHEN;
 import static uk.co.sample.constant.CommonConstant.LOG_SOURCE_BATCH;
 import static uk.co.sample.constant.CommonConstant.LOG_SOURCE_KEY;
 
-import javax.inject.Inject;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import uk.co.sample.base.AbstractBatch;
@@ -21,8 +20,7 @@ import uk.co.sample.util.PropertyUtil;
 
 public class BatchRunner {
 
-    @Inject
-    private Logger logger;
+    private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     //***** injection field *****
     //***** constructor *****
@@ -86,6 +84,7 @@ public class BatchRunner {
 
         return batchResult;
     }
+
     //***** call back method *****
     //***** getter and setter *****
     public void setLogger(Logger logger) {//Used for injection

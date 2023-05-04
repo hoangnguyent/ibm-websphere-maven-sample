@@ -8,12 +8,14 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
+
 		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -47,8 +49,6 @@
 		<dependency>
 			<groupId>com.ibm.ws</groupId>
 			<artifactId>jaxrs20</artifactId>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/../library/com.ibm.ws.jaxrs20.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -61,36 +61,42 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs -->
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-jaxrs</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common -->
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-common</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- ***************** -->

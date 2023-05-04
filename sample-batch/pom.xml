@@ -8,11 +8,12 @@
 	<parent>
 		<groupId>uk.co</groupId>
 		<artifactId>sample-root-project</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>../sample-root-project/pom.xml</relativePath>
 	</parent>
 
 	<build>
+
 		<finalName>${project.artifactId}</finalName>
 
 		<resources>
@@ -29,6 +30,15 @@
 				<artifactId>maven-acr-plugin</artifactId>
 				<version>3.1.0</version>
 				<extensions>true</extensions>
+				<configuration>
+					<mainClass>uk.co.sample.BatchRunner</mainClass>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>uk.co.sample.BatchRunner</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 
 			<!-- Setting project facet -->
