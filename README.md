@@ -1,33 +1,45 @@
 # Introduction 
-This is a sample project for J2EE using the Maven build tool with multiple modules.
+This is a J2E sample project using the Maven build tool with multiple modules.
 
-The logic is simple. When a Train is activated, there is an event message sent to ACTIVATE queue. The application will take the message, and store a record in the database. After a period of time, a Scheduler Job will process this record to change its status and forward the message to another queue. Finally, another Scheduler Job will logically delete the record.
+The logic is simple. When a Train is activated, an event message is sent to ACTIVATE queue. The application will take the message, and store a record in the database. After a period of time, a Scheduler Job will process this record to change its status and forward the message to another queue. Finally, another Scheduler Job will logically delete the record.
 
 **Technique stack:**
 
 ```sh
-IBM Websphere Application Server Traditional (WAS) 9.0.5.7
-IBM MQ server (for developer) 9.2.5
-IBM Scheduler
-Rational Application Developer (RAD) 9.0.1.4
-Oracle database
-Enterprise JavaBeans 3.1
-Open JPA 2.0
-OpenAPI (Swagger) 1.5.4
-Both RESTful and SOAP web services
+1.IBM Websphere Application Server Traditional (WAS) 9.0.5.7
+2. IBM MQ server (for developer) 9.2.5
+3. IBM Scheduler
+4. Rational Application Developer (RAD) 9.0.1.4
+5. Oracle database
+6. Enterprise JavaBeans 3.1
+7. Open JPA 2.0
+8. OpenAPI (Swagger) 1.5.4
+9. Both RESTful and SOAP web services
+```
+
+# What will you get in this sample?
+```sh
+1. How to apply the Maven build tool for an IBM EAR project with multiple modules.
+2. How to implement and apply Container-Managed Transactions(CMT) and Bean-managed transactions(BMT).
+3. How to apply multiple Database data sources with Open JPA.
+4. How to apply OpenAPI (Swagger) 1.5.4 in an EAR project.
+5. How to implement Queue Message Sender. How to implement Queue Message Listener with "retry, fallback, timeout".
+It is easy to change the code of Queue Listener to Topic Listener or Activation Specification.
+6. How to implement IBM Schedulers. How to start or stop the Jobs or even manage their trigger times manually.
+7. etc
 ```
 
 # Getting Started
 ## 1. Required Softwares.
 
 In order to start the application, you must have all the Softwares that have been listed above.
-The DDL for the table's schema is placed in the DDL file.
+The script for the table's schema is placed in the DDL file.
 
 ## 2. Server configuration
 
-You must create IBM Websphere Application Server before configuring.
+You will need to create an IBM Websphere Application Server profile before configuring.
 
-I have provided a sample configuration in the /file/dev.car. You can restore it using Rational Application Developer or Command Line or configure everything by yourself.
+I have provided a sample configuration in the /file/dev.car. You can restore it using Rational Application Developer or Command Line or configure everything yourself.
 
 **Windows Command Line:**
 
@@ -49,7 +61,7 @@ AdminTask.importWasprofile(['-archive', '/tmp/workspaces/ibm_maven_sample/dev.ca
 exit
 ```
 
-## 3. Start server at the first time
+## 3. Start server for the first time
 
 Start the Server.
 
